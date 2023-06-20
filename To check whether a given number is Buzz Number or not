@@ -1,0 +1,27 @@
+Buzz Number:- If a number is divisible by 7 or else leaves a remainder of 7 when divide by 10
+
+Using Java... :-
+import java.util.Scanner;
+public class BuzzNumber{
+    public static void main(String[]args){
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter a number: ");
+        int n=sc.nextInt();
+        if(n%7==0 || n%10==0)
+        {
+            System.out.println("Given number is a Buzz Number");
+        }
+        else
+            System.out.println("Given number is not a Buzz Number");
+    }
+}
+
+Using Python... :-
+N=input("Enter a number: ");
+N=int(N);
+
+if(N%7==0 or N%10==7):
+print("Given number is Buzz Number");
+else:
+print("Given number is not Buzz Number");
+ 
