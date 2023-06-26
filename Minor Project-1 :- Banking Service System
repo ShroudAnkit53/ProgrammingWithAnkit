@@ -1,0 +1,104 @@
+// Minor Project-1 :- Banking Service System
+// To create a class Bank Application of a customer...
+// A bank account have Customer ID, Customer Name, Balance, and record of previous transaction whether u have withdraw or depositted money...
+// Using some class and constuctor we can create a java program...
+
+import java.util.Scanner;
+public class BankApplication{
+    // We have taken intial balance Rs.2000/-
+    double balance=2000;  
+    double prevTrans;
+    Long CustomerID;
+    String CustomerName;
+    BankApplication(String CustomerName, Long CustomerID){
+        this.CustomerName=CustomerName;
+        this.CustomerID=CustomerID;
+    }
+    void deposit(double a){
+        if(a!=0){
+            balance+=a;
+            prevTrans=a;
+        }
+    }
+    void withdraw(double amt){
+        if(amt!=0 && amt>=0){
+            balance-=amt;
+            prevTrans=-amt;
+        }
+        else 
+        System.out.println("Bank Balance is insufficient");
+    }
+    void getPreviousTrans(){
+        if(prevTrans>0){
+            System.out.println("Money depositted: "+prevTrans);
+        }
+        else if(prevTrans<0){
+            System.out.println("Money withdrawn: "+prevTrans);
+        }
+        else 
+        System.out.println("No transaction occured!!");
+    }
+    void menu(){
+        int choice;
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Welcome "+CustomerName);
+        System.out.println("Your ID is "+CustomerID);
+        System.out.println("\n");
+        System.out.println("Press 1: for Check Balance");
+        System.out.println("Press 2: for Deposit Amount");
+        System.out.println("Press 3: for Withdraw Amount");
+        System.out.println("Press 4: for Previous Transaction");
+        System.out.println("Press 5: for Exit");
+
+        do{
+           System.out.println("************");
+           System.out.println("Enter a choice: ");
+           choice=sc.nextInt();
+           System.out.println("\n Proceeding!!!");
+
+           switch(choice){
+            case 1: System.out.println("************");
+            System.out.println("Balance is: "+balance);
+            System.out.println("\n");
+            break;
+
+            case 2: System.out.println("************");
+            System.out.println("Enter the amount of deposit: ");
+            double a=sc.nextDouble();
+            deposit(a);
+            System.out.println("\n");
+            break;
+
+            case 3: System.out.println("************");
+            System.out.println("Enter the amount of withdraw: ");
+            double amt=sc.nextDouble();
+            withdraw(amt);
+            System.out.println("\n");
+            break;
+
+            case 4: System.out.println("************");
+            System.out.println("Found Previous Transaction: ");
+            getPreviousTrans();
+            System.out.println("\n");
+            break;
+
+            case 5: System.out.println("************");
+            break;
+           }
+        }
+        while(choice!=5);
+        System.out.println("Thanks for choosing our Banking services!!");
+        System.out.println("Have a nice day!!");
+    }
+    public static void main(String[]args){
+        Scanner sc= new Scanner(System.in);
+        System.out.println("Enter your bank details below to access your account!! ");
+        System.out.println("Enter your name: ");
+        String n=sc.nextLine();
+        System.out.println("Enter customer ID: ");
+        Long c=sc.nextLong();
+        BankApplication ob= new BankApplication(n, c);
+        ob.menu();
+
+    }
+}
